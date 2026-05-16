@@ -18,3 +18,13 @@ C:\Users\Pavle Stefanovic\Downloads\Projekat_KT2_zadatak8_9_10\Projekat\Client\o
 C:\Users\Pavle Stefanovic\Downloads\Projekat_KT2_zadatak8_9_10\Projekat\Client\obj\Debug\Client.csproj.Up2Date
 C:\Users\Pavle Stefanovic\Downloads\Projekat_KT2_zadatak8_9_10\Projekat\Client\obj\Debug\Client.exe
 C:\Users\Pavle Stefanovic\Downloads\Projekat_KT2_zadatak8_9_10\Projekat\Client\obj\Debug\Client.pdb
+C:\Users\Pavle Stefanovic\Desktop\FTN\III Godina\VIRTUELIZACIJA\Virtuelizacija_G3_PR41_PR43_2023\Client\bin\Debug\Client.exe.config
+C:\Users\Pavle Stefanovic\Desktop\FTN\III Godina\VIRTUELIZACIJA\Virtuelizacija_G3_PR41_PR43_2023\Client\bin\Debug\Client.exe
+C:\Users\Pavle Stefanovic\Desktop\FTN\III Godina\VIRTUELIZACIJA\Virtuelizacija_G3_PR41_PR43_2023\Client\bin\Debug\Client.pdb
+C:\Users\Pavle Stefanovic\Desktop\FTN\III Godina\VIRTUELIZACIJA\Virtuelizacija_G3_PR41_PR43_2023\Client\bin\Debug\Common.dll
+C:\Users\Pavle Stefanovic\Desktop\FTN\III Godina\VIRTUELIZACIJA\Virtuelizacija_G3_PR41_PR43_2023\Client\bin\Debug\Common.pdb
+C:\Users\Pavle Stefanovic\Desktop\FTN\III Godina\VIRTUELIZACIJA\Virtuelizacija_G3_PR41_PR43_2023\Client\obj\Debug\Client.csproj.AssemblyReference.cache
+C:\Users\Pavle Stefanovic\Desktop\FTN\III Godina\VIRTUELIZACIJA\Virtuelizacija_G3_PR41_PR43_2023\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
+C:\Users\Pavle Stefanovic\Desktop\FTN\III Godina\VIRTUELIZACIJA\Virtuelizacija_G3_PR41_PR43_2023\Client\obj\Debug\Client.csproj.Up2Date
+C:\Users\Pavle Stefanovic\Desktop\FTN\III Godina\VIRTUELIZACIJA\Virtuelizacija_G3_PR41_PR43_2023\Client\obj\Debug\Client.exe
+C:\Users\Pavle Stefanovic\Desktop\FTN\III Godina\VIRTUELIZACIJA\Virtuelizacija_G3_PR41_PR43_2023\Client\obj\Debug\Client.pdb

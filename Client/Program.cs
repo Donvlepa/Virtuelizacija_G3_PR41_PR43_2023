@@ -1,6 +1,7 @@
 ﻿using Common;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.ServiceModel;
 using System.Threading;
 
@@ -56,7 +57,14 @@ namespace Client
                 ServiceResponse startResponse = proxy.StartSession(meta);
                 Console.WriteLine($"StartSession: {startResponse.Success}, {startResponse.Status}");
 
-                List<WeatherSample> samples = CsvLoader.LoadWeatherSamples("cleaned_weather.csv");
+                string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+
+                string csvPath = Path.Combine(baseDir, "..", "..", "Data", "cleaned_weather.csv");
+                csvPath = Path.GetFullPath(csvPath);
+
+                Console.WriteLine("CSV path: " + csvPath);
+
+                List<WeatherSample> samples = CsvLoader.LoadWeatherSamples(csvPath);
 
                 Console.WriteLine($"Učitano iz CSV: {samples.Count}");
 

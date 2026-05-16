@@ -1,0 +1,96 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Pavle Stefanovic\\Desktop\\FTN\\III Godina\\VIRTUELIZACIJA\\Virtuelizacija_G3_PR41_PR43_2023\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|Client||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{86B8B7FC-5961-476A-9192-D08FAC0AFA8C}|Client\\Client.csproj|c:\\users\\pavle stefanovic\\desktop\\ftn\\iii godina\\virtuelizacija\\virtuelizacija_g3_pr41_pr43_2023\\client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86B8B7FC-5961-476A-9192-D08FAC0AFA8C}|Client\\Client.csproj|solutionrelative:client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{86B8B7FC-5961-476A-9192-D08FAC0AFA8C}|Client\\Client.csproj|c:\\users\\pavle stefanovic\\desktop\\ftn\\iii godina\\virtuelizacija\\virtuelizacija_g3_pr41_pr43_2023\\client\\data\\cleaned_weather.csv||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{86B8B7FC-5961-476A-9192-D08FAC0AFA8C}|Client\\Client.csproj|solutionrelative:client\\data\\cleaned_weather.csv||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{86B8B7FC-5961-476A-9192-D08FAC0AFA8C}|Client\\Client.csproj|c:\\users\\pavle stefanovic\\desktop\\ftn\\iii godina\\virtuelizacija\\virtuelizacija_g3_pr41_pr43_2023\\client\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|6185191f-1008-4fb2-a715-3a4e4f27e610"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Client",
+              "DocumentMoniker": "C:\\Users\\Pavle Stefanovic\\Desktop\\FTN\\III Godina\\VIRTUELIZACIJA\\Virtuelizacija_G3_PR41_PR43_2023\\Client\\Client.csproj",
+              "RelativeDocumentMoniker": "Client\\Client.csproj",
+              "ToolTip": "C:\\Users\\Pavle Stefanovic\\Desktop\\FTN\\III Godina\\VIRTUELIZACIJA\\Virtuelizacija_G3_PR41_PR43_2023\\Client\\Client.csproj",
+              "RelativeToolTip": "Client\\Client.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-05-16T15:43:10.982Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "cleaned_weather.csv",
+              "DocumentMoniker": "C:\\Users\\Pavle Stefanovic\\Desktop\\FTN\\III Godina\\VIRTUELIZACIJA\\Virtuelizacija_G3_PR41_PR43_2023\\Client\\Data\\cleaned_weather.csv",
+              "RelativeDocumentMoniker": "Client\\Data\\cleaned_weather.csv",
+              "ToolTip": "C:\\Users\\Pavle Stefanovic\\Desktop\\FTN\\III Godina\\VIRTUELIZACIJA\\Virtuelizacija_G3_PR41_PR43_2023\\Client\\Data\\cleaned_weather.csv",
+              "RelativeToolTip": "Client\\Data\\cleaned_weather.csv",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002120|",
+              "WhenOpened": "2026-05-16T15:41:45.095Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Pavle Stefanovic\\Desktop\\FTN\\III Godina\\VIRTUELIZACIJA\\Virtuelizacija_G3_PR41_PR43_2023\\Client\\Program.cs",
+              "RelativeDocumentMoniker": "Client\\Program.cs",
+              "ToolTip": "C:\\Users\\Pavle Stefanovic\\Desktop\\FTN\\III Godina\\VIRTUELIZACIJA\\Virtuelizacija_G3_PR41_PR43_2023\\Client\\Program.cs",
+              "RelativeToolTip": "Client\\Program.cs",
+              "ViewState": "AgIAAIAAAAAAAAAAAAAswLcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T15:35:33.864Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

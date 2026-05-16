@@ -24,3 +24,16 @@ C:\Users\Pavle Stefanovic\Downloads\Projekat_KT2_zadatak8_9_10\Projekat\Service\
 C:\Users\Pavle Stefanovic\Downloads\Projekat_KT2_zadatak8_9_10\Projekat\Service\obj\Debug\Service.csproj.Up2Date
 C:\Users\Pavle Stefanovic\Downloads\Projekat_KT2_zadatak8_9_10\Projekat\Service\obj\Debug\Service.exe
 C:\Users\Pavle Stefanovic\Downloads\Projekat_KT2_zadatak8_9_10\Projekat\Service\obj\Debug\Service.pdb
+C:\Users\Pavle Stefanovic\Desktop\FTN\III Godina\VIRTUELIZACIJA\Virtuelizacija_G3_PR41_PR43_2023\Service\bin\Debug\Service.exe.config
+C:\Users\Pavle Stefanovic\Desktop\FTN\III Godina\VIRTUELIZACIJA\Virtuelizacija_G3_PR41_PR43_2023\Service\bin\Debug\Service.exe
+C:\Users\Pavle Stefanovic\Desktop\FTN\III Godina\VIRTUELIZACIJA\Virtuelizacija_G3_PR41_PR43_2023\Service\bin\Debug\Service.pdb
+C:\Users\Pavle Stefanovic\Desktop\FTN\III Godina\VIRTUELIZACIJA\Virtuelizacija_G3_PR41_PR43_2023\Service\bin\Debug\Client.exe
+C:\Users\Pavle Stefanovic\Desktop\FTN\III Godina\VIRTUELIZACIJA\Virtuelizacija_G3_PR41_PR43_2023\Service\bin\Debug\Common.dll
+C:\Users\Pavle Stefanovic\Desktop\FTN\III Godina\VIRTUELIZACIJA\Virtuelizacija_G3_PR41_PR43_2023\Service\bin\Debug\Client.pdb
+C:\Users\Pavle Stefanovic\Desktop\FTN\III Godina\VIRTUELIZACIJA\Virtuelizacija_G3_PR41_PR43_2023\Service\bin\Debug\Client.exe.config
+C:\Users\Pavle Stefanovic\Desktop\FTN\III Godina\VIRTUELIZACIJA\Virtuelizacija_G3_PR41_PR43_2023\Service\bin\Debug\Common.pdb
+C:\Users\Pavle Stefanovic\Desktop\FTN\III Godina\VIRTUELIZACIJA\Virtuelizacija_G3_PR41_PR43_2023\Service\obj\Debug\Service.csproj.AssemblyReference.cache
+C:\Users\Pavle Stefanovic\Desktop\FTN\III Godina\VIRTUELIZACIJA\Virtuelizacija_G3_PR41_PR43_2023\Service\obj\Debug\Service.csproj.CoreCompileInputs.cache
+C:\Users\Pavle Stefanovic\Desktop\FTN\III Godina\VIRTUELIZACIJA\Virtuelizacija_G3_PR41_PR43_2023\Service\obj\Debug\Service.csproj.Up2Date
+C:\Users\Pavle Stefanovic\Desktop\FTN\III Godina\VIRTUELIZACIJA\Virtuelizacija_G3_PR41_PR43_2023\Service\obj\Debug\Service.exe
+C:\Users\Pavle Stefanovic\Desktop\FTN\III Godina\VIRTUELIZACIJA\Virtuelizacija_G3_PR41_PR43_2023\Service\obj\Debug\Service.pdb
