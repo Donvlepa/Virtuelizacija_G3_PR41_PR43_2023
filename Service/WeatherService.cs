@@ -1,6 +1,7 @@
 ﻿using Common;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.ServiceModel;
 
 namespace Service
@@ -11,9 +12,12 @@ namespace Service
         private static readonly object syncRoot = new object();
         private static readonly List<WeatherSample> samples = new List<WeatherSample>();
         private static readonly WeatherAnalyticsState analyticsState = new WeatherAnalyticsState();
+
         private static SessionFileStorage fileStorage;
         private static bool sessionStarted;
         private static AnalyticsSettings analyticsSettings = AnalyticsSettings.LoadFromConfiguration();
+
+        private static ICommunicationObject activeClientChannel;
 
         public event EventHandler<TransferStartedEventArgs> OnTransferStarted;
         public event EventHandler<SampleReceivedEventArgs> OnSampleReceived;
@@ -34,7 +38,7 @@ namespace Service
 
             lock (syncRoot)
             {
-                CloseCurrentSessionIfExists();
+                CloseCurrentSessionIfExists("Pokretanje nove sesije. Zatvaram prethodnu ako postoji.");
 
                 samples.Clear();
                 analyticsState.Reset();
@@ -42,7 +46,10 @@ namespace Service
 
                 fileStorage = new SessionFileStorage(meta.Headers);
                 fileStorage.StartSession();
+
                 sessionStarted = true;
+
+                RegisterClientChannel();
 
                 Console.WriteLine("prenos u toku...");
                 Console.WriteLine("Kreiran measurements_session.csv: " + fileStorage.MeasurementsPath);
@@ -110,7 +117,9 @@ namespace Service
             lock (syncRoot)
             {
                 totalSamples = samples.Count;
-                CloseCurrentSessionIfExists();
+
+                CloseCurrentSessionIfExists("Normalan završetak prenosa preko EndSession.");
+
                 RaiseTransferCompleted(new TransferCompletedEventArgs(DateTime.Now, totalSamples));
             }
 
@@ -133,15 +142,118 @@ namespace Service
             }
         }
 
-        private static void CloseCurrentSessionIfExists()
+        private static void CloseCurrentSessionIfExists(string reason)
         {
+            string measurementsPath = null;
+            string rejectsPath = null;
+
             if (fileStorage != null)
             {
+                measurementsPath = fileStorage.MeasurementsPath;
+                rejectsPath = fileStorage.RejectsPath;
+
                 fileStorage.Dispose();
                 fileStorage = null;
+
+                Console.WriteLine("[RESOURCE CLEANUP] SessionFileStorage je zatvoren.");
+                Console.WriteLine("[RESOURCE CLEANUP] Razlog: " + reason);
             }
 
             sessionStarted = false;
+
+            UnregisterClientChannel();
+
+            ProveFileIsUnlocked(measurementsPath);
+            ProveFileIsUnlocked(rejectsPath);
+        }
+
+        private static void RegisterClientChannel()
+        {
+            if (OperationContext.Current == null)
+            {
+                return;
+            }
+
+            ICommunicationObject channel = OperationContext.Current.Channel;
+
+            if (channel == null)
+            {
+                return;
+            }
+
+            if (activeClientChannel != null)
+            {
+                activeClientChannel.Closed -= ActiveClientChannel_Closed;
+                activeClientChannel.Faulted -= ActiveClientChannel_Faulted;
+            }
+
+            activeClientChannel = channel;
+
+            activeClientChannel.Closed += ActiveClientChannel_Closed;
+            activeClientChannel.Faulted += ActiveClientChannel_Faulted;
+        }
+
+        private static void UnregisterClientChannel()
+        {
+            if (activeClientChannel == null)
+            {
+                return;
+            }
+
+            activeClientChannel.Closed -= ActiveClientChannel_Closed;
+            activeClientChannel.Faulted -= ActiveClientChannel_Faulted;
+            activeClientChannel = null;
+        }
+
+        private static void ActiveClientChannel_Closed(object sender, EventArgs e)
+        {
+            lock (syncRoot)
+            {
+                if (sessionStarted || fileStorage != null)
+                {
+                    Console.WriteLine("[SIMULATION] Detektovano zatvaranje klijentskog kanala pre EndSession.");
+                    CloseCurrentSessionIfExists("Klijentski kanal je zatvoren pre kraja prenosa.");
+                }
+            }
+        }
+
+        private static void ActiveClientChannel_Faulted(object sender, EventArgs e)
+        {
+            lock (syncRoot)
+            {
+                if (sessionStarted || fileStorage != null)
+                {
+                    Console.WriteLine("[SIMULATION] Detektovan prekid/fault klijentskog kanala pre EndSession.");
+                    CloseCurrentSessionIfExists("Klijentski kanal je pukao usred prenosa.");
+                }
+            }
+        }
+
+        private static void ProveFileIsUnlocked(string path)
+        {
+            if (string.IsNullOrWhiteSpace(path))
+            {
+                return;
+            }
+
+            if (!File.Exists(path))
+            {
+                return;
+            }
+
+            try
+            {
+                using (FileStream stream = File.Open(path, FileMode.Open, FileAccess.ReadWrite, FileShare.None))
+                {
+                }
+
+                Console.WriteLine("[DOKAZ] Fajl nije zaključan i može ekskluzivno da se otvori: " + path);
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine("[DOKAZ NEUSPEO] Fajl je i dalje zaključan: " + path);
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private void ValidateMeta(SessionMeta meta)
@@ -245,6 +357,7 @@ namespace Service
         private void RaiseTransferStarted(TransferStartedEventArgs args)
         {
             EventHandler<TransferStartedEventArgs> handler = OnTransferStarted;
+
             if (handler != null)
             {
                 handler(this, args);
@@ -254,6 +367,7 @@ namespace Service
         private void RaiseSampleReceived(SampleReceivedEventArgs args)
         {
             EventHandler<SampleReceivedEventArgs> handler = OnSampleReceived;
+
             if (handler != null)
             {
                 handler(this, args);
@@ -263,6 +377,7 @@ namespace Service
         private void RaiseTransferCompleted(TransferCompletedEventArgs args)
         {
             EventHandler<TransferCompletedEventArgs> handler = OnTransferCompleted;
+
             if (handler != null)
             {
                 handler(this, args);
@@ -272,6 +387,7 @@ namespace Service
         private void RaiseWarningRaised(WarningRaisedEventArgs args)
         {
             EventHandler<WarningRaisedEventArgs> handler = OnWarningRaised;
+
             if (handler != null)
             {
                 handler(this, args);

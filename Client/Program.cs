@@ -1,7 +1,6 @@
 ﻿using Common;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
 using System.Threading;
 
@@ -11,13 +10,22 @@ namespace Client
     {
         static void Main(string[] args)
         {
-            ChannelFactory<IWeatherService> factory =
-                new ChannelFactory<IWeatherService>("WeatherService");
+            bool simulateBreak =
+                args.Length > 0 &&
+                args[0].Equals("--simulate-break", StringComparison.OrdinalIgnoreCase);
 
-            IWeatherService proxy = factory.CreateChannel();
+            ChannelFactory<IWeatherService> factory = null;
+            IWeatherService proxy = null;
+            IClientChannel clientChannel = null;
+
+            bool aborted = false;
 
             try
             {
+                factory = new ChannelFactory<IWeatherService>("WeatherService");
+                proxy = factory.CreateChannel();
+                clientChannel = (IClientChannel)proxy;
+
                 SessionMeta meta = new SessionMeta
                 {
                     Headers = new List<string>
@@ -48,13 +56,32 @@ namespace Client
                 ServiceResponse startResponse = proxy.StartSession(meta);
                 Console.WriteLine($"StartSession: {startResponse.Success}, {startResponse.Status}");
 
-                var samples = CsvLoader.LoadWeatherSamples("cleaned_weather.csv");
+                List<WeatherSample> samples = CsvLoader.LoadWeatherSamples("cleaned_weather.csv");
 
                 Console.WriteLine($"Učitano iz CSV: {samples.Count}");
 
+                int breakAfter = Math.Max(1, samples.Count / 2);
+
+                if (simulateBreak)
+                {
+                    int parsedBreakAfter;
+
+                    if (args.Length > 1 && int.TryParse(args[1], out parsedBreakAfter))
+                    {
+                        breakAfter = parsedBreakAfter;
+                    }
+
+                    if (samples.Count > 0)
+                    {
+                        breakAfter = Math.Max(1, Math.Min(breakAfter, samples.Count));
+                    }
+
+                    Console.WriteLine($"[SIMULATION] Veza će biti prekinuta posle {breakAfter}. sample-a.");
+                }
+
                 int sampleNumber = 0;
 
-                foreach (var sample in samples)
+                foreach (WeatherSample sample in samples)
                 {
                     sampleNumber++;
 
@@ -70,6 +97,16 @@ namespace Client
                     catch (FaultException<DataFormatFault> ex)
                     {
                         Console.WriteLine($"{ResponseStatus.NACK} | DataFormatFault za sample {sampleNumber}: {ex.Detail.Message}");
+                    }
+
+                    if (simulateBreak && sampleNumber == breakAfter)
+                    {
+                        Console.WriteLine("[SIMULATION] Prekid veze usred prenosa. Klijent abortuje WCF kanal.");
+
+                        clientChannel.Abort();
+                        aborted = true;
+
+                        throw new CommunicationException("SIMULACIJA: veza je prekinuta usred prenosa.");
                     }
 
                     Thread.Sleep(100);
@@ -90,8 +127,50 @@ namespace Client
             {
                 Console.WriteLine($"Greška: {ex.Message}");
             }
+            finally
+            {
+                CloseOrAbort(clientChannel, "WCF channel", aborted);
 
-            Console.ReadLine();
+                if (factory != null)
+                {
+                    CloseOrAbort(factory, "ChannelFactory", false);
+                }
+
+                if (aborted)
+                {
+                    Console.WriteLine("[DISPOSE] Klijent je prekinuo prenos i oslobodio lokalne WCF resurse.");
+                    Console.WriteLine("[DISPOSE] EndSession nije pozvan jer se simulira pad veze.");
+                }
+
+                Console.ReadLine();
+            }
+        }
+
+        private static void CloseOrAbort(ICommunicationObject communicationObject, string name, bool forceAbort)
+        {
+            if (communicationObject == null)
+            {
+                return;
+            }
+
+            try
+            {
+                if (forceAbort || communicationObject.State == CommunicationState.Faulted)
+                {
+                    communicationObject.Abort();
+                    Console.WriteLine($"[DISPOSE] {name} abortovan.");
+                }
+                else
+                {
+                    communicationObject.Close();
+                    Console.WriteLine($"[DISPOSE] {name} zatvoren.");
+                }
+            }
+            catch
+            {
+                communicationObject.Abort();
+                Console.WriteLine($"[DISPOSE] {name} abortovan nakon greške pri zatvaranju.");
+            }
         }
     }
 }

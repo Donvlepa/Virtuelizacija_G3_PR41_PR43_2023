@@ -55,6 +55,8 @@ namespace Service
 
             measurementsWriter.Flush();
             rejectsWriter.Flush();
+
+            disposed = false;
         }
 
         public void AppendMeasurement(WeatherSample sample)
@@ -81,9 +83,9 @@ namespace Service
 
         private void EnsureWritersAreOpen()
         {
-            if (measurementsWriter == null || rejectsWriter == null)
+            if (disposed || measurementsWriter == null || rejectsWriter == null)
             {
-                throw new InvalidOperationException("CSV fajlovi za sesiju nisu otvoreni.");
+                throw new InvalidOperationException("CSV fajlovi za sesiju nisu otvoreni ili su već zatvoreni.");
             }
         }
 
@@ -127,20 +129,28 @@ namespace Service
             {
                 case "t":
                     return sample.T.ToString(CultureInfo.InvariantCulture);
+
                 case "pressure":
                     return sample.Pressure.ToString(CultureInfo.InvariantCulture);
+
                 case "tpot":
                     return sample.Tpot.ToString(CultureInfo.InvariantCulture);
+
                 case "tdew":
                     return sample.Tdew.ToString(CultureInfo.InvariantCulture);
+
                 case "vpmax":
                     return sample.VPmax.ToString(CultureInfo.InvariantCulture);
+
                 case "vpdef":
                     return sample.VPdef.ToString(CultureInfo.InvariantCulture);
+
                 case "vpact":
                     return sample.VPact.ToString(CultureInfo.InvariantCulture);
+
                 case "date":
                     return sample.Date.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
+
                 default:
                     return string.Empty;
             }
@@ -153,7 +163,10 @@ namespace Service
                 return string.Empty;
             }
 
-            bool mustQuote = value.Contains(",") || value.Contains("\"") || value.Contains("\r") || value.Contains("\n");
+            bool mustQuote = value.Contains(",") ||
+                             value.Contains("\"") ||
+                             value.Contains("\r") ||
+                             value.Contains("\n");
 
             value = value.Replace("\"", "\"\"");
 
@@ -167,24 +180,29 @@ namespace Service
 
         public void Dispose()
         {
-            if (disposed)
+            lock (locker)
             {
-                return;
-            }
+                if (disposed)
+                {
+                    return;
+                }
 
-            if (measurementsWriter != null)
-            {
-                measurementsWriter.Dispose();
-                measurementsWriter = null;
-            }
+                if (measurementsWriter != null)
+                {
+                    measurementsWriter.Dispose();
+                    measurementsWriter = null;
+                }
 
-            if (rejectsWriter != null)
-            {
-                rejectsWriter.Dispose();
-                rejectsWriter = null;
-            }
+                if (rejectsWriter != null)
+                {
+                    rejectsWriter.Dispose();
+                    rejectsWriter = null;
+                }
 
-            disposed = true;
+                disposed = true;
+
+                Console.WriteLine("[DISPOSE] measurementsWriter i rejectsWriter su zatvoreni.");
+            }
         }
     }
 }

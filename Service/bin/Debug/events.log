@@ -499,3 +499,13 @@
 2026-05-14 21:06:37 | OnSampleReceived | sample = 49 | datum = 2020-01-01 08:20:00 | P = 1008.12 | Pmean = 1008.17040816327
 2026-05-14 21:06:37 | OnSampleReceived | sample = 50 | datum = 2020-01-01 08:30:00 | P = 1008.12 | Pmean = 1008.1694
 2026-05-14 21:06:37 | OnSampleReceived | sample = 51 | datum = 2020-01-01 08:40:00 | P = 1008.04 | Pmean = 1008.1668627451
+2026-05-16 16:52:27 | OnTransferStarted | vreme = 2026-05-16 16:52:27 | folder = C:\Users\Pavle Stefanovic\Desktop\FTN\III Godina\VIRTUELIZACIJA\Projekat\Service\bin\Debug\ServerData\Session_20260516_165227
+2026-05-16 16:52:27 | OnSampleReceived | sample = 1 | datum = 2020-01-01 00:10:00 | P = 1008.89 | Pmean = 1008.89
+2026-05-16 16:52:28 | OnSampleReceived | sample = 2 | datum = 2020-01-01 00:20:00 | P = 1008.76 | Pmean = 1008.825
+2026-05-16 16:52:28 | OnSampleReceived | sample = 3 | datum = 2020-01-01 00:30:00 | P = 1008.66 | Pmean = 1008.77
+2026-05-16 16:52:28 | OnSampleReceived | sample = 4 | datum = 2020-01-01 00:40:00 | P = 1008.64 | Pmean = 1008.7375
+2026-05-16 16:52:28 | OnSampleReceived | sample = 5 | datum = 2020-01-01 00:50:00 | P = 1008.61 | Pmean = 1008.712
+2026-05-16 16:52:28 | OnSampleReceived | sample = 6 | datum = 2020-01-01 01:00:00 | P = 1008.44 | Pmean = 1008.66666666667
+2026-05-16 16:52:28 | OnSampleReceived | sample = 7 | datum = 2020-01-01 01:10:00 | P = 1008.49 | Pmean = 1008.64142857143
+2026-05-16 16:52:29 | OnSampleReceived | sample = 8 | datum = 2020-01-01 01:30:00 | P = 1008.29 | Pmean = 1008.5975
+2026-05-16 16:52:29 | OnSampleReceived | sample = 9 | datum = 2020-01-01 01:40:00 | P = 1008.28 | Pmean = 1008.56222222222
