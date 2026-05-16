@@ -1,0 +1,12 @@
+C:\Users\Pavle Stefanovic\Desktop\FTN\III Godina\VIRTUELIZACIJA\Projekat\Common\bin\Debug\Common.dll
+C:\Users\Pavle Stefanovic\Desktop\FTN\III Godina\VIRTUELIZACIJA\Projekat\Common\bin\Debug\Common.pdb
+C:\Users\Pavle Stefanovic\Desktop\FTN\III Godina\VIRTUELIZACIJA\Projekat\Common\obj\Debug\Common.csproj.AssemblyReference.cache
+C:\Users\Pavle Stefanovic\Desktop\FTN\III Godina\VIRTUELIZACIJA\Projekat\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+C:\Users\Pavle Stefanovic\Desktop\FTN\III Godina\VIRTUELIZACIJA\Projekat\Common\obj\Debug\Common.dll
+C:\Users\Pavle Stefanovic\Desktop\FTN\III Godina\VIRTUELIZACIJA\Projekat\Common\obj\Debug\Common.pdb
+C:\Users\Pavle Stefanovic\Downloads\Projekat_KT2_zadatak8_9_10\Projekat\Common\bin\Debug\Common.dll
+C:\Users\Pavle Stefanovic\Downloads\Projekat_KT2_zadatak8_9_10\Projekat\Common\bin\Debug\Common.pdb
+C:\Users\Pavle Stefanovic\Downloads\Projekat_KT2_zadatak8_9_10\Projekat\Common\obj\Debug\Common.csproj.AssemblyReference.cache
+C:\Users\Pavle Stefanovic\Downloads\Projekat_KT2_zadatak8_9_10\Projekat\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+C:\Users\Pavle Stefanovic\Downloads\Projekat_KT2_zadatak8_9_10\Projekat\Common\obj\Debug\Common.dll
+C:\Users\Pavle Stefanovic\Downloads\Projekat_KT2_zadatak8_9_10\Projekat\Common\obj\Debug\Common.pdb
