@@ -1,0 +1,2 @@
+T,Pressure,Tpot,Tdew,VPmax,VPdef,VPact,Date,Reason
+0.03,-10,272.53,-1.7,6.12,0.73,5.39,2020-01-01 01:20:00,Pressure mora biti > 0.
